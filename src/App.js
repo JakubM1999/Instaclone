@@ -38,10 +38,9 @@ function App() {
   const [state,dispatch] = useReducer(reducer,initialState)
   return (
     <UserContext.Provider value={{state,dispatch}}>
-    <HashRouter basename="/JakubM1999">
+    <HashRouter>
     <Navbar />
     <Routing />
-
     </HashRouter>
     </UserContext.Provider>
   );
