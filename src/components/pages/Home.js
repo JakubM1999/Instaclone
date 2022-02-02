@@ -109,7 +109,7 @@ const Home = () => {
               )}{" "}
             </h4>
             <div className="card-image">
-              <img style={{overFlow:"hidden",maxWidth:"665px", margin:"0 auto"}} alt="" src={item.photo} />
+              <img style={{overFlow:"hidden",maxWidth:"665px",maxHeight:"auto", margin:"0 auto"}} alt="" src={item.photo} />
             </div>
             <div className="card-content">
               {item.likes.includes(state._id) ? (
