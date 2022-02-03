@@ -9,6 +9,9 @@ const Signin = () => {
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
     const PostData = ()=>{
+      if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
+        return alert("Invalid email")
+      }
         fetch("https://instaclonevefskoli.herokuapp.com/signin",{
             method:"POST",
             headers:{"Content-Type":"application/json"
@@ -29,7 +32,6 @@ const Signin = () => {
             localStorage.setItem("user", JSON.stringify(data.user))
             dispatch({type:"USER",payload:data.user})
             navigate('/')
-            alert(data.message)
         }
         }).catch(error=>{
             console.log(error)
@@ -39,8 +41,8 @@ const Signin = () => {
     <div className="mycard">
       <div className="card auth-card">
         <h2>Log in</h2>
-        <input type="text" placeholder="email" type="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
-        <input type="text" placeholder="password" type="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
+        <input placeholder="email" type="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+        <input placeholder="password" type="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
         <button className="btn waves-effect waves-light" onClick={()=>PostData()}>Login</button>
         <p>
           <Link to="/signup">I don't have an account</Link>
